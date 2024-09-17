@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const info = document.createElement('div');
                 info.className = 'cert-info';
+
+                let linkOrgHTML = '';
+                if (cert.linkOrg) {
+                    linkOrgHTML = `<a href="${cert.linkOrg}" target="_blank">Ver curso</a>`;
+                }
+
                 info.innerHTML = `
                     <h3>${cert.title}</h3>
                     <p><strong>Proveedor:</strong> ${cert.provider}</p>
@@ -31,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p><strong>Fecha de Finalización:</strong> ${cert.finishDate}</p>
                     <p><strong>Duración:</strong> ${cert.durationInMonth === 9999 ? cert.durationInHours + " Horas" : cert.durationInMonth + " Meses"}</p>
                     <p><strong>Tecnologías:</strong> ${cert.stack.join(', ')}</p>
+                    ${linkOrgHTML}
                 `;
 
                 const link = document.createElement('a');
